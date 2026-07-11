@@ -537,9 +537,7 @@
   // ================= STORIES =================
   (function(){
     var box=document.getElementById('stories');
-    var FAITH={'The faith of the family':1,'A ministry that moved every year':1,
-      'The Covenanters of Due West':1,'Friends: the Nortons among the Quakers':1,
-      'Out of a persecuted kirk':1};
+    var FAITH={'The Bible in the Garage — Tata\'s faith and his life\'s work':1};
     var all=(DATA.stories||[]).slice();
     if(!all.length){ box.innerHTML='<p class="empty">No stories recorded.</p>'; return; }
     var faith=all.filter(function(s){return FAITH[s.title];});
@@ -556,7 +554,7 @@
     if(faith.length){
       var h=document.createElement('p'); h.className='stories-head'; h.textContent='Faith & Conviction'; box.appendChild(h);
       var sh=document.createElement('p'); sh.className='stories-sub';
-      sh.textContent='From an Ulster kirkyard to a Pentecostal pulpit — the churches this family kept, and the ones it left home for.';
+      sh.textContent='From the Orthodox Banat to a Pentecostal faith — and a life spent translating the Word back to the country they left.';
       box.appendChild(sh);
       faith.forEach(function(s){ box.appendChild(card(s,true)); });
     }
