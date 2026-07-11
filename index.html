@@ -296,8 +296,8 @@
       <span><i class="dot speculative"></i> Speculative — a lead, unproven</span>
     </div>
     <div class="lv-switch">
-      <button data-lv="fan" class="on">Fan chart</button>
-      <button data-lv="tree">Pedigree tree</button>
+      <button data-lv="fan">Fan chart</button>
+      <button data-lv="tree" class="on">Pedigree tree</button>
       <button data-lv="list">List</button>
       <span class="gen-ctl">depth <select id="genSel"><option>5</option><option>6</option><option>7</option><option>8</option><option selected>9</option><option>10</option><option>11</option><option>12</option></select> gen.</span>
     </div>
@@ -305,8 +305,8 @@
       <p class="ped-intro">Every ancestor of the Borlovan–Nai family of Timișoara, Romania, we have found. Open a branch with the <b>＋</b>, or select any name to read their record.</p>
       <div id="pedigree"></div>
     </div>
-    <div id="lv-fan"><div id="fan"></div><p class="fan-cap">A radial fan of ancestors — the center is you, each ring a generation outward. Select any wedge to open that person; empty wedges are ancestors still unknown. A fan halves each wedge every ring, so it tops out near 12 generations — for the full depth use the <b>Pedigree tree</b>.</p></div>
-    <div id="lv-tree" hidden><p class="fan-cap" style="margin:0 auto 10px">A left-to-right ancestor chart — you on the left, each column a generation back. Scroll inside the frame to explore; set <b>depth</b> above to show more or fewer generations.</p><div id="ped"></div></div>
+    <div id="lv-fan" hidden><div id="fan"></div><p class="fan-cap">A radial fan of ancestors — the center is you, each ring a generation outward. Select any wedge to open that person; empty wedges are ancestors still unknown. A fan halves each wedge every ring, so it tops out near 12 generations — for the full depth use the <b>Pedigree tree</b>.</p></div>
+    <div id="lv-tree"><p class="fan-cap" style="margin:0 auto 10px">A left-to-right ancestor chart — you on the left, each column a generation back. Scroll inside the frame to explore; set <b>depth</b> above to show more or fewer generations.</p><div id="ped"></div></div>
   </section>
 
   <section class="view" id="view-people" role="tabpanel"><div id="people"></div></section>
@@ -492,7 +492,7 @@
   function buildPed(maxD){ document.getElementById('ped').innerHTML='<div class="ptree">'+pbranch(FOCUS,0,maxD)+'</div>'; }
 
   (function(){
-    var cur='fan', built={}, sel=document.getElementById('genSel');
+    var cur='tree', built={}, sel=document.getElementById('genSel');
     function gen(){ return parseInt(sel.value,10)||7; }
     function render(v){ if(v==='fan') buildFan(gen()); else if(v==='tree') buildPed(gen()); built[v]=gen(); }
     document.querySelectorAll('.lv-switch button').forEach(function(b){
@@ -504,7 +504,7 @@
       };
     });
     sel.onchange=function(){ if(cur!=='list') render(cur); };
-    render('fan'); // fan is the default view — build it on load
+    render('tree'); // pedigree tree is the default view — build it on load
   })();
 
   // ================= PEOPLE =================
